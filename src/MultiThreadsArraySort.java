@@ -11,8 +11,8 @@ import java.util.concurrent.Future;
 public class MultiThreadsArraySort {
 	
 
-	protected static final int SIZE = 10;												// MAX = 500000
-	protected static final int THREADS = 20;												// N
+	protected static final int SIZE = 1000;												// MAX = 500000
+	protected static final int THREADS = 10;												// N
 	private static double st, en;
 
 	public static void main(String[] args) throws IOException {
@@ -141,7 +141,7 @@ public class MultiThreadsArraySort {
          	System.out.println(ex.getMessage());
          }
         
-        System.out.println("Merge Sort ("+THREADS+" Thread(s)) finished in: "+((en-st)/1000000000)+" seconds");
+        System.out.println("Radix Sort ("+THREADS+" Thread(s)) finished in: "+((en-st)/1000000000)+" seconds");
 
 	}
 
