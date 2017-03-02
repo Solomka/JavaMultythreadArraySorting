@@ -7,12 +7,12 @@ import java.util.Arrays;
  *
  */
 /*
- * In worst case scenario – Normal insertion sort takes O( i ) time in its
- * ith iteration whereas using binary search can reduce it to O(log( i )).
+ * In worst case scenario – Normal insertion sort takes O( i ) time in its ith
+ * iteration whereas using binary search can reduce it to O(log( i )).
  * 
- * Note – Overall time complexity of the algorithm in the worst case is
- * still O(n2) because of the number of swaps required to put every element
- * at the correct location.
+ * Note – Overall time complexity of the algorithm in the worst case is still
+ * O(n2) because of the number of swaps required to put every element at the
+ * correct location.
  */
 public final class BinaryInsertionSort {
 
@@ -27,7 +27,8 @@ public final class BinaryInsertionSort {
 			// Find location to insert using binary search
 			int j = Math.abs(Arrays.binarySearch(array, 0, i, x) + 1);
 
-			// Shifting array to one location right
+			// Shifting array to one location right that rpoviding the gap for
+			// your element
 			System.arraycopy(array, j, array, j + 1, i - j);
 
 			// Placing element at its correct location
