@@ -26,7 +26,7 @@ public class MultiThreadsArraySort {
 		BufferedReader br = new BufferedReader(new InputStreamReader(in,
 				"UTF-8"));
 
-		System.out.println("File size:"+br.readLine() + "\nFile lines: "
+		System.out.println("File size:" + br.readLine() + "\nFile lines: "
 				+ size);
 
 		for (int i = 0; i < size; i++) {
@@ -111,11 +111,17 @@ public class MultiThreadsArraySort {
 				pool.shutdown(); // the end
 			}
 
-			// merging
-			String binaryInsertionSortResult[] = ArraysMerger
+			/*
+			 * merge all separated sorted subarrays into one sorted array each
+			 * 2-arrays merging process in new Thread
+			 */
+			String[] binaryInsertionSortResult = ArraysMerger
 					.mergeMultithread(insSortArr);
 
 			en = System.nanoTime();
+			/*
+			 * write sorted array into the result file with statistics
+			 */
 			writeResult(st, en, binaryInsertionSortResult,
 					"BinaryInsertionSortResult.txt");
 		} else if (sortingType == "radix") {
@@ -140,11 +146,17 @@ public class MultiThreadsArraySort {
 				pool.shutdown(); // the end
 			}
 
-			// merging
-			String radixSortResult[] = ArraysMerger
+			/*
+			 * merge all separated sorted subarrays into one sorted array each
+			 * 2-arrays merging process in new Thread
+			 */
+			String[] radixSortResult = ArraysMerger
 					.mergeMultithread(radixSortArr);
 
 			en = System.nanoTime();
+			/*
+			 * write sorted array into the result file with statistics
+			 */
 			writeResult(st, en, radixSortResult, "RadixSortResult.txt");
 
 		} else {
