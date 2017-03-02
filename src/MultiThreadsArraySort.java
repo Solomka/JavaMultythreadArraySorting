@@ -26,7 +26,7 @@ public class MultiThreadsArraySort {
 		BufferedReader br = new BufferedReader(new InputStreamReader(in,
 				"UTF-8"));
 
-		System.out.println("File size: " + br.readLine() + "\nFile lines: "
+		System.out.println("File size:"+br.readLine() + "\nFile lines: "
 				+ size);
 
 		for (int i = 0; i < size; i++) {
@@ -41,7 +41,7 @@ public class MultiThreadsArraySort {
 
 	// 500 000 - max number of lines to read from file
 	private static final int LINES_NUM_TO_READ = 1000;
-	private static final int THREADS_NUM = 10;
+	private static final int THREADS_NUM = 3;
 
 	private static ArrayList<String[]> insSortArr;
 	private static ArrayList<String[]> radixSortArr;
@@ -88,6 +88,7 @@ public class MultiThreadsArraySort {
 		double en = 0;
 
 		if (sortingType == "binary") {
+
 			st = System.nanoTime();
 			// create pool of threads
 			ExecutorService pool = Executors.newFixedThreadPool(THREADS_NUM);
@@ -118,7 +119,6 @@ public class MultiThreadsArraySort {
 			writeResult(st, en, binaryInsertionSortResult,
 					"BinaryInsertionSortResult.txt");
 		} else if (sortingType == "radix") {
-
 			st = System.nanoTime();
 			// create pool of threads
 			ExecutorService pool = Executors.newFixedThreadPool(THREADS_NUM);
@@ -178,7 +178,7 @@ public class MultiThreadsArraySort {
 
 	public static void main(String[] args) throws IOException {
 
-		String[] data = readFileData("500.000.txt", LINES_NUM_TO_READ);
+		String[] data = readFileData("TestData.txt", LINES_NUM_TO_READ);
 
 		/*
 		 * data for Binary Insertion Sort
