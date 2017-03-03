@@ -56,7 +56,7 @@ public class MultiThreadsArraySort {
 		int arrSize = LINES_NUM_TO_READ / THREADS_NUM;
 		int counter = 0;
 
-		// splitting to N arrays
+		// split to N arrays
 		for (int i = 0; i < THREADS_NUM; i++) {
 			String[] temp;
 			if (remainder > 0) {
@@ -115,8 +115,8 @@ public class MultiThreadsArraySort {
 			 * merge all separated sorted subarrays into one sorted array each
 			 * 2-arrays merging process in new Thread
 			 */
-			String[] binaryInsertionSortResult = ArraysMerger
-					.mergeMultithread(insSortArr);
+			String[] binaryInsertionSortResult = Merger
+					.sortedArraysMerge(insSortArr);
 
 			en = System.nanoTime();
 			/*
@@ -150,8 +150,8 @@ public class MultiThreadsArraySort {
 			 * merge all separated sorted subarrays into one sorted array each
 			 * 2-arrays merging process in new Thread
 			 */
-			String[] radixSortResult = ArraysMerger
-					.mergeMultithread(radixSortArr);
+			String[] radixSortResult = Merger
+					.sortedArraysMerge(radixSortArr);
 
 			en = System.nanoTime();
 			/*
