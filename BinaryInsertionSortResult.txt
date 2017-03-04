@@ -1000,5 +1000,5 @@
 Якушева Оксана Константиновна
 
 Statistics
-Sorted in: 0.024472691 seconds
+Sorted in: 0.062053132 seconds
 By: 3 threads

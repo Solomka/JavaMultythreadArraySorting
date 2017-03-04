@@ -16,7 +16,7 @@ public class Merger {
 	 * add to list of sorted arrays
 	 * 
 	 * synchronized - just one thread can add sorted merged array to the list
-	 * per
+	 * per moment of time
 	 */
 	public static synchronized void addToSortedList(String[] result) {
 		sortedArrays.add(result);

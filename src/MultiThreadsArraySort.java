@@ -92,9 +92,13 @@ public class MultiThreadsArraySort {
 			st = System.nanoTime();
 			// create pool of threads
 			ExecutorService pool = Executors.newFixedThreadPool(THREADS_NUM);
+			//list of tasks
+			//list of Future sorted arrays -> List<String[]>
 			List<Callable<Object>> tasks = new ArrayList<>();
 			try {
 				for (String[] subArray : insSortArr) {
+					// Callable returns result
+					// Runnable doesn't return result
 					tasks.add(new Callable<Object>() {
 						public Object call() throws Exception {
 							BinaryInsertionSort.binaryInsertionSort(subArray);
@@ -102,16 +106,24 @@ public class MultiThreadsArraySort {
 						}
 					});
 				}
-				// run pool of threads
+				// run pool of threads and wait until the longest one finishes execution
 				List<Future<Object>> invokeAll = pool.invokeAll(tasks);
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
-				pool.shutdown(); // the end
+				/*
+				 * method will allow previously submitted tasks to execute
+				 * before terminating An unused ExecutorService should be shut
+				 * down to allow reclamation of its resources.
+				 */
+				pool.shutdown();
 			}
 
 			/*
+			 * insSortArr - list of already sorted arrays after pool execution
+			 * finish
+			 * 
 			 * merge all separated sorted subarrays into one sorted array each
 			 * 2-arrays merging process in new Thread
 			 */
@@ -143,15 +155,19 @@ public class MultiThreadsArraySort {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
-				pool.shutdown(); // the end
+				/*
+				 * method will allow previously submitted tasks to execute
+				 * before terminating An unused ExecutorService should be shut
+				 * down to allow reclamation of its resources.
+				 */
+				pool.shutdown();
 			}
 
 			/*
 			 * merge all separated sorted subarrays into one sorted array each
 			 * 2-arrays merging process in new Thread
 			 */
-			String[] radixSortResult = Merger
-					.sortedArraysMerge(radixSortArr);
+			String[] radixSortResult = Merger.sortedArraysMerge(radixSortArr);
 
 			en = System.nanoTime();
 			/*

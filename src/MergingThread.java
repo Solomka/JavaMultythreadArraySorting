@@ -14,7 +14,7 @@ public class MergingThread extends Thread {
 	}
 
 	/**
-	 * merge 2 sorted arrays and into one sorted array
+	 * merge 2 sorted arrays into one sorted array
 	 */
 	@Override
 	public void run() {
